@@ -10,9 +10,9 @@ ResultModel _$ResultModelFromJson(Map<String, dynamic> json) => ResultModel(
       products: (json['products'] as List<dynamic>?)
           ?.map((e) => ProductModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      total: json['total'] as int?,
-      skip: json['skip'] as int?,
-      limit: json['limit'] as int?,
+      total: (json['total'] as num?)?.toInt(),
+      skip: (json['skip'] as num?)?.toInt(),
+      limit: (json['limit'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$ResultModelToJson(ResultModel instance) =>

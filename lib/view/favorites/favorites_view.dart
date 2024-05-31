@@ -72,15 +72,19 @@ class _FavoritesViewState extends State<FavoritesView> {
                         2.h.ph,
                         CustomText(
                           "Favorilerde Ürün Bulunmamaktadır",
-                          textStyle: context.general.textTheme.headline6?.copyWith(color: ColorConstants.instance?.mainColor),
+                          textStyle:
+                              context.general.textTheme.headline6?.copyWith(color: ColorConstants.instance?.mainColor),
                         ),
                       ],
                     );
-            } else if (state is ProductsLoading) {
-              return const Center(child: CircularProgressIndicator());
-            } else {
-              return Center(child: CustomText(state.toString()));
             }
+            if (state is ProductsLoading) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            if (state is ProductLoadError) {
+              return Center(child: CustomText(state.errorMessage));
+            }
+            return const Center(child: CustomText("Undefined Error"));
           },
         )
       ],

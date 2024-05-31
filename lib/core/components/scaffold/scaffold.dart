@@ -15,6 +15,8 @@ class CustomScaffold extends StatelessWidget {
   final String? appbarTitle;
   final List<Widget>? actions;
   final bool isNoPaddingTop;
+  final bool isThereLeading;
+
   const CustomScaffold({
     Key? key,
     this.isThereAppbar = true,
@@ -25,6 +27,7 @@ class CustomScaffold extends StatelessWidget {
     this.actions,
     this.isNoPaddingTop = false,
     this.bottomNavigationBar,
+    this.isThereLeading = true,
   }) : super(key: key);
 
   @override
@@ -34,6 +37,7 @@ class CustomScaffold extends StatelessWidget {
           ? CustomAppbar(
               actions: actions,
               title: appbarTitle,
+              isThereLeading: isThereLeading,
             )
           : null,
       backgroundColor: ColorConstants.instance?.alabaster,

@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:marketing_app/core/base/model/product_model.dart';
+import 'package:marketing_app/view/auth/login/login_view.dart';
+import 'package:marketing_app/view/auth/register/register_view.dart';
 import 'package:marketing_app/view/basket/basket_view.dart';
 import 'package:marketing_app/view/discover/discover_view.dart';
 import 'package:marketing_app/view/favorites/favorites_view.dart';
@@ -18,18 +20,20 @@ part 'routes.gr.dart';
 class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
-    AutoRoute(path: "/", page: SplashRoute.page, initial: true),
-    AutoRoute(path: "/main", page: MainRoute.page, children: [
-      AutoRoute(path: "home", page: HomeRoute.page),
-      AutoRoute(path: "basket", page: BasketRoute.page),
-      AutoRoute(path: "discover", page: DiscoverRoute.page),
-      AutoRoute(path: "favorites", page: FavoritesRoute.page),
-    ]),
-    AutoRoute(path: "/search", page: SearchProductRoute.page),
-    AutoRoute(path: "/product-detail", page: ProductDetailRoute.page),
-    AutoRoute(path: "/payment", page: PaymentRoute.page),
-    AutoRoute(path: "/payment-result", page: PaymentResultRoute.page),
-  ];
+        AutoRoute(path: "/", page: SplashRoute.page, initial: true),
+        AutoRoute(path: "/login", page: LoginRoute.page),
+        AutoRoute(path: "/register", page: RegisterRoute.page),
+        AutoRoute(path: "/main", page: MainRoute.page, children: [
+          AutoRoute(path: "home", page: HomeRoute.page),
+          AutoRoute(path: "basket", page: BasketRoute.page),
+          AutoRoute(path: "discover", page: DiscoverRoute.page),
+          AutoRoute(path: "favorites", page: FavoritesRoute.page),
+        ]),
+        AutoRoute(path: "/search", page: SearchProductRoute.page),
+        AutoRoute(path: "/product-detail", page: ProductDetailRoute.page),
+        AutoRoute(path: "/payment", page: PaymentRoute.page),
+        AutoRoute(path: "/payment-result", page: PaymentResultRoute.page),
+      ];
 }
 
 // @CupertinoAutoRouter

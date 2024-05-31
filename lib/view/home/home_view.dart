@@ -41,7 +41,6 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        8.h.ph,
         _searchField(context),
         2.h.ph,
         Row(
@@ -103,13 +102,15 @@ class _HomeViewState extends State<HomeView> {
         bloc: productBloc,
         builder: (context, state) {
           if (state is ProductsLoaded) {
-          //TODO: USED ITERATOR PATTERN DESIGN
             return ProductList(ProductCollection(state.productList));
-          } else if (state is ProductsLoading) {
-            return const Center(child: CircularProgressIndicator());
-          } else {
-            return CustomText(state.toString());
           }
+          if (state is ProductsLoading) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (state is ProductLoadError) {
+            return CustomText(state.errorMessage);
+          }
+          return CustomText("Undefined error");
         },
       ),
     );

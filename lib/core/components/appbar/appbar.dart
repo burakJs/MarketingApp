@@ -20,7 +20,8 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       title: CustomText(
         title,
-        textStyle: context.general.textTheme.headline5?.copyWith(color: ColorConstants.instance?.mainColor, fontWeight: FontWeight.w600),
+        textStyle: context.general.textTheme.headline5
+            ?.copyWith(color: ColorConstants.instance?.mainColor, fontWeight: FontWeight.w600),
       ),
     );
   }
@@ -52,5 +53,5 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(70);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

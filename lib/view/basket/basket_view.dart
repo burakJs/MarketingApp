@@ -44,7 +44,9 @@ class _BasketViewState extends State<BasketView> {
             child: BlocConsumer<ProductBloc, ProductState>(
               bloc: _basketBloc,
               buildWhen: (previousState, currentState) {
-                return currentState is ProductsLoaded || currentState is ProductsLoading || currentState is ProductLoadError;
+                return currentState is ProductsLoaded ||
+                    currentState is ProductsLoading ||
+                    currentState is ProductLoadError;
               },
               listener: (context, state) {
                 if (state is UpdatedBasket) {
@@ -81,15 +83,20 @@ class _BasketViewState extends State<BasketView> {
                             2.h.ph,
                             CustomText(
                               "Sepette Ürün Bulunmamaktadır",
-                              textStyle: context.general.textTheme.headline6?.copyWith(color: ColorConstants.instance?.mainColor),
+                              textStyle: context.general.textTheme.headline6
+                                  ?.copyWith(color: ColorConstants.instance?.mainColor),
                             ),
                           ],
                         );
-                } else if (state is ProductsLoading) {
+                }
+                if (state is ProductsLoading) {
                   return const Center(child: CircularProgressIndicator());
-                } else {
+                }
+                if (state is ProductLoadError) {
                   return CustomText(state.toString());
                 }
+
+                return const Center(child: CustomText("Undefined Error"));
               },
             )),
       ],

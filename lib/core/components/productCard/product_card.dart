@@ -78,7 +78,9 @@ class _ProductCardWidgetState extends State<ProductCardWidget> {
                     width: 37,
                     margin: EdgeInsets.all(1.w),
                     decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.white, boxShadow: [BoxShadow(offset: Offset(0, 1), color: Colors.grey, blurRadius: 1)]),
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                        boxShadow: [BoxShadow(offset: Offset(0, 1), color: Colors.grey, blurRadius: 1)]),
                     child: IconButton(
                       splashColor: Colors.white,
                       icon: isLike
@@ -113,7 +115,7 @@ class _ProductCardWidgetState extends State<ProductCardWidget> {
             0.1.h.ph,
             CustomText(
               '\$${widget.productModel?.price}',
-              textStyle: context.general.textTheme.headline6?.copyWith(color: ColorConstants.instance?.mainColor),
+              textStyle: context.general.textTheme.titleLarge?.copyWith(color: ColorConstants.instance?.mainColor),
             ),
             0.1.h.ph,
           ],

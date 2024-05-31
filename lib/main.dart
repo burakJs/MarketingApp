@@ -1,17 +1,26 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketing_app/core/init/navigation/routes.dart';
+import 'package:marketing_app/firebase_options.dart';
 import 'package:sizer/sizer.dart';
 
 import 'core/base/bloc/bloc_observer.dart';
 import 'core/dependcy_injector.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   // ignore: deprecated_member_use
   BlocOverrides.runZoned(
       () => runApp(
             MultiBlocProvider(
-              providers: DependencyInjector.instance.globalBlocProviders,
+              providers: [
+                ...DependencyInjector.instance.globalBlocProviders,
+                ...DependencyInjector.instance.globalCubitProviders,
+              ],
               child: MyApp(),
             ),
           ),
